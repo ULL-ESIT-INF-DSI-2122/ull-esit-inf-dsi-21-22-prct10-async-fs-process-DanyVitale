@@ -7,7 +7,6 @@
 
 [![Tests](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/test.js.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/test.js.yml)
 [![Coveralls](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/coveralls.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/coveralls.yml)
-[![Sonar-Cloud](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/sonarcloud.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale)
 
@@ -567,3 +566,4 @@ Una vez hecho lo anterior, se comprueban los parámetros y se ejecuta el comando
 ## CONCLUSIONES<a name="id6"></a>
 Para el desarrollo de esta práctica se han utilizado las siguientes librerías: ```fs```, ```yargs```, ```chalk```, ```child_process``` y ```path```.
 Fue muy útil la realización de la práctica para que se pudiera entender mejor el funcionamiento de estas. Además, se intentó gestionar y manejar de los errores que se pudieran producir en cada uno de los ejercicios desarrollados. 
+
