@@ -7,7 +7,6 @@ if (argv.length !== 6) {
   process.exit(1);
 }
 
-
 yargs.command({
   command: 'find',
   describe: 'Find a word in a file',

@@ -8,6 +8,9 @@ if (process.argv.length !== 4) {
   process.exit(1);
 }
 
+/**
+ * @function watchFile - Watch a file and emit an event when the file is changed
+ */
 export function watchFile(path: string): void {
   watch(path, (eventType, filename) => {
     if (eventType === 'change') {
@@ -23,6 +26,10 @@ export function watchFile(path: string): void {
   });
 }
 
+/**
+ * @function readFile - Read a file and emit an event when the file is read
+ * @param path Path to the file
+ */
 export function readFile(path: string): void {
   console.log(chalk.blue('Reading file...'));
   const readStream = createReadStream(path);
@@ -39,12 +46,22 @@ export function readFile(path: string): void {
   });
 }
 
+/**
+ * getUser - Get the user from the command line
+ * @param path is the path to the file
+ * @returns user input
+ */
 export function getUser(path: string) {
+  console.log('Getting user...');
   const user = path.split('/')[2];
   console.log(chalk.blue(`User: ${user}`));
   return user;
 }
 
+/**
+ * watchDirectory - Watch a directory and emit an event when the directory is changed
+ * @param path is the path to the file
+ */
 export function watchDirectory(path: string): void {
   const user = getUser(path);
   watch(path, (eventType, filename) => {

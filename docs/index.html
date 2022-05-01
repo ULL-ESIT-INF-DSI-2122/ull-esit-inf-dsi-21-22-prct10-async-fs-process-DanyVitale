@@ -1,0 +1,139 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>prct10</title><meta name="description" content="Documentation for prct10"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">prct10</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> prct10 </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#práctica-10---sistema-de-ficheros-y-creación-de-procesos-en-nodejs" id="práctica-10---sistema-de-ficheros-y-creación-de-procesos-en-nodejs" style="color: inherit; text-decoration: none;">
+  <h1>PRÁCTICA 10 - Sistema de ficheros y creación de procesos en Node.js</h1>
+</a>
+
+<a href="#asignatura-desarrollo-de-sistemas-informáticos" id="asignatura-desarrollo-de-sistemas-informáticos" style="color: inherit; text-decoration: none;">
+  <h3><em>ASIGNATURA:</em> Desarrollo de Sistemas Informáticos</h3>
+</a>
+<blockquote>
+<p><strong>NOMBRE COMPLETO:</strong> DANIELE VITALE<br>ID ALU: ALU0101329017<br>E-MAIL: <a href="mailto:alu0101329017@ull.edu.es">alu0101329017@ull.edu.es</a><br>CURSO: 3ro Ingeniería Informática   </p>
+</blockquote>
+<p><a href="https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/test.js.yml"><img src="https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/test.js.yml/badge.svg" alt="Tests"></a>
+<a href="https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/coveralls.yml"><img src="https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/coveralls.yml/badge.svg" alt="Coveralls"></a>
+<a href="https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/sonarcloud.yml"><img src="https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale/actions/workflows/sonarcloud.yml/badge.svg" alt="Sonar-Cloud"></a>
+<a href="https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale"><img src="https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale&metric=alert_status" alt="Quality Gate Status"></a>
+<a href="https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale"><img src="https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct10-async-fs-process-DanyVitale&metric=coverage" alt="Coverage"></a></p>
+
+<a href="#índice" id="índice" style="color: inherit; text-decoration: none;">
+  <h2><strong>ÍNDICE</strong></h2>
+</a>
+<ol>
+<li><a href="#id1">INTRODUCCIÓN</a></li>
+<li><a href="#id2">DESARROLLO</a></li>
+</ol>
+<p>  2.1 <a href="#id3">EJERCICIO 1</a><br>  2.2 <a href="#id4">EJERCICIO 2</a><br>  2.3 <a href="#id5">EJERCICIO 3</a><br>  2.4 <a href="#id6">EJERCICIO 4</a>
+3. <a href="#id7">CONCLUSIONES</a></p>
+
+<a href="#introducción" id="introducción" style="color: inherit; text-decoration: none;">
+  <h2><strong>INTRODUCCIÓN</strong><a name="id1"></a></h2>
+</a>
+<p>La práctica consta de un conjunto de cuatro ejercicios que se pueden resolver de forma asíncrona.</p>
+<p>Antes de empezar hay que hacer una serie de tareas previas que comprenden lo siguiente:</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Aceptar la <a href="https://classroom.github.com/a/8yO8h5vy">asignación de GitHub Classroom</a> asociada a esta práctica.</li>
+<li><input checked="" disabled="" type="checkbox"> Aprender a utilizar los paquetes <a href="https://www.npmjs.com/package/yargs">yargs</a> y <a href="https://www.npmjs.com/package/chalk">chalk</a></li>
+<li><input checked="" disabled="" type="checkbox"> Familiarizarse con el <a href="https://nodejs.org/dist/latest-v18.x/docs/api/fs.html#synchronous-api">API síncrona proporcionada por Node.js para trabajar con el sistema de ficheros.</a></li>
+</ul>
+
+<a href="#desarrollo" id="desarrollo" style="color: inherit; text-decoration: none;">
+  <h2><strong>DESARROLLO</strong><a name="id2"></a></h2>
+</a>
+
+<a href="#ejercicio-1" id="ejercicio-1" style="color: inherit; text-decoration: none;">
+  <h3><strong>EJERCICIO 1</strong><a name="id3"></a></h3>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> {</span><span class="hl-2">access</span><span class="hl-1">, </span><span class="hl-2">constants</span><span class="hl-1">, </span><span class="hl-2">watch</span><span class="hl-1">} </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;fs&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">process</span><span class="hl-1">.</span><span class="hl-2">argv</span><span class="hl-1">.</span><span class="hl-2">length</span><span class="hl-1"> !== </span><span class="hl-4">3</span><span class="hl-1">) {</span><br/><span class="hl-1">  </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-3">&#39;Please, specify a file&#39;</span><span class="hl-1">);</span><br/><span class="hl-1">} </span><span class="hl-0">else</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">filename</span><span class="hl-1"> = </span><span class="hl-2">process</span><span class="hl-1">.</span><span class="hl-2">argv</span><span class="hl-1">[</span><span class="hl-4">2</span><span class="hl-1">];</span><br/><br/><span class="hl-1">  </span><span class="hl-5">access</span><span class="hl-1">(</span><span class="hl-2">filename</span><span class="hl-1">, </span><span class="hl-2">constants</span><span class="hl-1">.</span><span class="hl-7">F_OK</span><span class="hl-1">, (</span><span class="hl-2">err</span><span class="hl-1">) </span><span class="hl-6">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">err</span><span class="hl-1">) {</span><br/><span class="hl-1">      </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-3">`File </span><span class="hl-6">${</span><span class="hl-2">filename</span><span class="hl-6">}</span><span class="hl-3"> does not exist`</span><span class="hl-1">);</span><br/><span class="hl-1">    } </span><span class="hl-0">else</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-3">`Starting to watch file </span><span class="hl-6">${</span><span class="hl-2">filename</span><span class="hl-6">}</span><span class="hl-3">`</span><span class="hl-1">);</span><br/><br/><span class="hl-1">      </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">watcher</span><span class="hl-1"> = </span><span class="hl-5">watch</span><span class="hl-1">(</span><span class="hl-2">process</span><span class="hl-1">.</span><span class="hl-2">argv</span><span class="hl-1">[</span><span class="hl-4">2</span><span class="hl-1">]);</span><br/><br/><span class="hl-1">      </span><span class="hl-2">watcher</span><span class="hl-1">.</span><span class="hl-5">on</span><span class="hl-1">(</span><span class="hl-3">&#39;change&#39;</span><span class="hl-1">, () </span><span class="hl-6">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-3">`File </span><span class="hl-6">${</span><span class="hl-2">filename</span><span class="hl-6">}</span><span class="hl-3"> has been modified somehow`</span><span class="hl-1">);</span><br/><span class="hl-1">      });</span><br/><br/><span class="hl-1">      </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-3">`File </span><span class="hl-6">${</span><span class="hl-2">filename</span><span class="hl-6">}</span><span class="hl-3"> is no longer watched`</span><span class="hl-1">);</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">  });</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>Dado el programa se realizará una traza de ejecución mostrando, paso a paso, el contenido de la pila de llamadas, el registro de eventos de la API y la cola de manejadores, además de lo que se muestra por la consola. </p>
+<p>Paso inicial: se inicia el programa con el nombre del fichero que se quiere observar.</p>
+<ul>
+<li>Pila de llamadas: &#39;[]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[]&#39;</li>
+</ul>
+<p>Paso 1:</p>
+<ul>
+<li>Pila de llamadas: &#39;[]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[]&#39;</li>
+</ul>
+<p>Paso 2: se llama a la función &#39;access&#39; con los parámetros &#39;filename&#39; y &#39;constants.F_OK&#39;</p>
+<ul>
+<li>Pila de llamadas: &#39;[access, main]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[]&#39;</li>
+</ul>
+<p>Paso 3: sale access de la pila de llamadas y entra en la cola de manejadores</p>
+<ul>
+<li>Pila de llamadas: &#39;[main]&#39;</li>
+<li>Registro de eventos de la API: &#39;[callback of access]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[]&#39;</li>
+</ul>
+<p>Paso 4: gracias a la ausencia de errores, se llama a la función &#39;constants.F_OK&#39;</p>
+<ul>
+<li>Pila de llamadas: &#39;[main]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[access]&#39;</li>
+<li>Consola: &#39;[]&#39;</li>
+</ul>
+<p>Paso 5: entra callback de access y sale el main de la pila de llamadas</p>
+<ul>
+<li>Pila de llamadas: &#39;[callback of access]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[]&#39;</li>
+</ul>
+<p>Paso 6: gracias a la ausencia de errores, se llama a la función &#39;constants.F_OK&#39; y se muestra por la consola que el fichero existe y se está observando</p>
+<ul>
+<li>Pila de llamadas: &#39;[watcher.on, callback of access x 2]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[&#39;Starting to watch file helloworld.txt&#39;]&#39;</li>
+</ul>
+<p>Paso 7: se muestra por la consola que el fichero ya no está observado</p>
+<ul>
+<li>Pila de llamadas: &#39;[]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[&#39;File helloworld.txt is no longer watched&#39;]&#39;</li>
+</ul>
+<p>Paso 8: se llama a la función &#39;watcher.on&#39; con los parámetros &#39;change&#39; y &#39;() =&gt; {}&#39; y se muestra por la consola que el fichero se ha modificado</p>
+<ul>
+<li>Pila de llamadas: &#39;[watcher.on]&#39;</li>
+<li>Registro de eventos de la API: &#39;[]&#39;</li>
+<li>Cola de manejadores: &#39;[]&#39;</li>
+<li>Consola: &#39;[File helloworld.txt has been modified somehow]&#39;</li>
+</ul>
+<p>Una vez hecho lo anterior, se procede con la resolución de algunas preguntas:</p>
+<ul>
+<li>¿Qué hace la función <code>access</code>? La función <code>access</code> comprueba los permisos de acceso de un fichero dado. Los permisos de acceso existentes son:<ul>
+<li><code>constants.F_OK</code>: comprueba si el fichero existe</li>
+<li><code>constants.R_OK</code>: comprueba si el fichero tiene permisos de lectura</li>
+<li><code>constants.W_OK</code>: comprueba si el fichero tiene permisos de escritura</li>
+<li><code>constants.X_OK</code>: comprueba si el fichero tiene permisos de ejecución</li>
+</ul>
+</li>
+<li>¿Qué hace la función <code>constants</code>? La función <code>constants</code> contiene constantes que representan los permisos de acceso de un fichero previamente mencionados.</li>
+</ul>
+
+<a href="#ejercicio-2" id="ejercicio-2" style="color: inherit; text-decoration: none;">
+  <h3><strong>EJERCICIO 2</strong><a name="id4"></a></h3>
+</a>
+
+<a href="#ejercicio-2-1" id="ejercicio-2-1" style="color: inherit; text-decoration: none;">
+  <h3><strong>EJERCICIO 2</strong><a name="id4"></a></h3>
+</a>
+
+<a href="#ejercicio-3" id="ejercicio-3" style="color: inherit; text-decoration: none;">
+  <h3><strong>EJERCICIO 3</strong><a name="id5"></a></h3>
+</a>
+
+<a href="#conclusiones" id="conclusiones" style="color: inherit; text-decoration: none;">
+  <h2>CONCLUSIONES<a name="id6"></a></h2>
+</a>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/Ejercicio_2_findWord.html">Ejercicio-<wbr/>2/find<wbr/>Word</a></li><li class=" tsd-kind-module"><a href="modules/Ejercicio_3_Notas_app.html">Ejercicio-<wbr/>3/<wbr/>Notas/app</a></li><li class=" tsd-kind-module"><a href="modules/Ejercicio_3_Notas_note.html">Ejercicio-<wbr/>3/<wbr/>Notas/note</a></li><li class=" tsd-kind-module"><a href="modules/Ejercicio_3_ejercicio_3.html">Ejercicio-<wbr/>3/ejercicio-<wbr/>3</a></li><li class=" tsd-kind-module"><a href="modules/Ejercicio_4_wrapper.html">Ejercicio-<wbr/>4/wrapper</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

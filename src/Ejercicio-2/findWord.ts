@@ -2,6 +2,9 @@ import {EventEmitter} from 'events';
 import {spawn} from 'child_process';
 import {access} from 'fs';
 
+/**
+ * @class FindWord describes the class that will find the word in the file
+ */
 export class FindWord extends EventEmitter {
   constructor() {
     super();
